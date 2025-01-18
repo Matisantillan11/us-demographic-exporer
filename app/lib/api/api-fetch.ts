@@ -13,6 +13,7 @@ export const apiFetch = async <T>({ url, init, responseType }: APIFetchArgs): Pr
 
 	try {
 		const response = await fetch(request)
+		console.log({ response })
 		const result = await response.json()
 
 		return result

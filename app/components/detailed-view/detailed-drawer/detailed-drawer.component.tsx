@@ -1,10 +1,10 @@
 import { DialogProps } from '@radix-ui/react-dialog'
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '../ui'
-import { DrawerContentProps } from '../ui/drawer/drawer.types'
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '../../ui'
+import { DrawerContentProps } from '../../ui/drawer/drawer.types'
 
 interface DetailedDrawerProps extends DialogProps, DrawerContentProps {}
 
-export const DetailedDrawer = (props: DetailedDrawerProps) => {
+export default function DetailedDrawer(props: DetailedDrawerProps) {
 	const { open, onOpenChange, children, defaultOpen, key, modal, ...drawerContentProps } = props
 	const drawerProps = {
 		children,

@@ -13,3 +13,5 @@ export interface ParsedDataUsaResponse {
 	totalPopulation: number
 	year: string
 }
+
+export type KeyForChart = keyof ParsedDataUsaResponse

@@ -1,13 +1,22 @@
-import { Chart } from './components'
-import { DataUSAResponse } from './interfaces/data-usa-response.interface'
+import { ChartWrapper } from './components'
+import { DataUSAResponse, ParsedDataUsaResponse } from './interfaces/data-usa-response.interface'
 import { apiFetch, ApiResponse } from './lib/api'
 import { parseDataUsaResponse } from './utils'
 
-export default async function Home() {
+const getForeingAndNativesData = async (): Promise<Array<ParsedDataUsaResponse>> => {
 	const apiResponse = await apiFetch<ApiResponse<Array<DataUSAResponse>>>({
 		url: '/data?measure=Foreign-Born Citizens,Population&Geography=01000US',
 	})
 
-	console.log({ apiResponse: apiResponse.data })
-	return <Chart data={parseDataUsaResponse(apiResponse.data)} />
+	return parseDataUsaResponse(apiResponse.data.sort((a, b) => (a.Year < b.Year ? -1 : 1)))
+}
+
+export default async function Home() {
+	const foreignsAndNatives = await getForeingAndNativesData()
+
+	return (
+		<div className='p-4 md:px-6 lg:px-8'>
+			<ChartWrapper foreignsAndNatives={foreignsAndNatives} />
+		</div>
+	)
 }

@@ -1,4 +1,4 @@
-import { ChartWrapper, DetailedDashboard, StateTable } from './components'
+import { ChartWrapper, DetailedDashboard, FilterWrapper, StateTable } from './components'
 
 import { DataUSAResponse, ParsedDataUsaResponse } from './interfaces/data-usa-response.interface'
 import { apiFetch, ApiResponse } from './lib/api'
@@ -17,7 +17,10 @@ export default async function Home() {
 
 	return (
 		<div className='p-4 md:px-6 lg:px-8'>
-			<h1 className='text-xl md:text-3xl'>US Demographic data visualization</h1>
+			<div className='flex flex-row justify-between items-center'>
+				<h1 className='text-xl md:text-3xl'>US Demographic data visualization</h1>
+				<FilterWrapper />
+			</div>
 			<div className='my-5 grid grid-cols-8 gap-5 group'>
 				<div className='col-span-8 lg:col-span-5 w-full grid gap-5 transition-all'>
 					<ChartWrapper foreignsAndNatives={foreignsAndNatives}></ChartWrapper>

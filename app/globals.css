@@ -19,3 +19,8 @@ body {
 	background: var(--background);
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+::-webkit-scrollbar-track {
+	background: black; /* Color del track (contenedor blanco) */
+	/* Bordes redondeados opcionales */
+}

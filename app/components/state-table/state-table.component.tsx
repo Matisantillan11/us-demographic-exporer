@@ -23,7 +23,7 @@ export default async function StateTable() {
 	])
 
 	return (
-		<div className='flex flex-col p-4 bg-gray-900/70 rounded-xl w-full'>
+		<div className='flex flex-col p-4 bg-[#1E1E1E] rounded-xl w-full'>
 			<Table>
 				<TableCaption>A detailed list</TableCaption>
 				<TableHeader>

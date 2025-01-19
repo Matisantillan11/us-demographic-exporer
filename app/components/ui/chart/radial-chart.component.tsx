@@ -1,5 +1,5 @@
 'use client'
-import { Legend, RadialBar, RadialBarChart, ResponsiveContainer } from 'recharts'
+import { RadialBar, RadialBarChart, ResponsiveContainer } from 'recharts'
 
 const data = [
 	{
@@ -45,13 +45,6 @@ const data = [
 		fill: '#ffc658',
 	},
 ]
-
-/* const style = {
-	top: '100%',
-	right: 0,
-	transform: 'translate(0, -100%)',
-	lineHeight: '24px',
-} */
 
 export default function RadialChart() {
 	return (

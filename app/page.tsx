@@ -23,7 +23,7 @@ export default async function Home() {
 					<ChartWrapper foreignsAndNatives={foreignsAndNatives}></ChartWrapper>
 					<StateTable />
 				</div>
-				<div className='p-2 bg-gray-900/70 rounded-xl w-full hidden lg:block transition-all translate-x-0 col-span-3'>
+				<div className='p-2 bg-[#1E1E1E] rounded-xl w-full hidden lg:block transition-all translate-x-0 col-span-3'>
 					<DetailedDashboard />
 				</div>
 			</div>

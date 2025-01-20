@@ -6,7 +6,7 @@ export const races = [
 	{
 		value: 'american indian and/or alaska native',
 		label:
-			'American Indian and Alaska Native tribes specified; or American Indian or Alaska Native, not specified and no other races',
+			'American Indian and Alaska Native tribes specified; or American Indian or Alaska Native; not specified and no other races',
 	},
 	{ value: 'asian', label: 'Asian' },
 	{ value: 'native hawaiian', label: 'Native Hawaiian and Other Pacific Islander' },

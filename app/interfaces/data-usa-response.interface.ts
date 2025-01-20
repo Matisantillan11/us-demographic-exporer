@@ -18,6 +18,42 @@ export interface DataUSAResponseByYear extends Partial<DataUSAResponse> {
 	State: string
 }
 
+export interface USAEnrollmentResponse {
+	'ID Gender': number
+	Gender: string
+	'ID IPEDS Race': string
+	'IPEDS Race': string
+	'ID Year': number
+	Year: string
+	Enrollment: number
+}
+
+export interface USAPopulationByRaceResponse {
+	'ID Race': number
+	Race: string
+	'ID Year': number
+	Year: string
+	'ID Nativity': number
+	Nativity: string
+	'Total Population': number
+	'Total Population MOE Appx': number
+	Geography: string
+	'ID Geography': string
+	'Slug Geography': string
+}
+
+export interface ParsedPopulationByRaceResponse {
+	race: string
+	totalPopulation: number
+	totalForeignPopulation: number
+}
+
+export interface ParsedEnrollmentResponse {
+	gender: string
+	race: string
+	enrollment: number
+}
+
 export interface ParsedDataUsaResponse {
 	foreignBorn: number
 	totalPopulation: number

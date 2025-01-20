@@ -1,58 +1,20 @@
 'use client'
-import { RadialBar, RadialBarChart, ResponsiveContainer } from 'recharts'
 
-const data = [
-	{
-		name: '18-24',
-		uv: 31.47,
-		pv: 2400,
-		fill: '#8884d8',
-	},
-	{
-		name: '25-29',
-		uv: 26.69,
-		pv: 4567,
-		fill: '#83a6ed',
-	},
-	{
-		name: '30-34',
-		uv: 15.69,
-		pv: 1398,
-		fill: '#8dd1e1',
-	},
-	{
-		name: '35-39',
-		uv: 8.22,
-		pv: 9800,
-		fill: '#82ca9d',
-	},
-	{
-		name: '40-49',
-		uv: 8.63,
-		pv: 3908,
-		fill: '#a4de6c',
-	},
-	{
-		name: '50+',
-		uv: 2.63,
-		pv: 4800,
-		fill: '#d0ed57',
-	},
-	{
-		name: 'unknow',
-		uv: 6.67,
-		pv: 4800,
-		fill: '#ffc658',
-	},
-]
+import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart, ResponsiveContainer } from 'recharts'
+import { ParsedPopulationByRaceResponse } from '~/app/interfaces/data-usa-response.interface'
+import { transformDataForRadialChart } from './utils'
 
-export default function RadialChart() {
+export default function RadialChart({ data }: { data: Array<ParsedPopulationByRaceResponse> | undefined }) {
+	const dataForRadial = transformDataForRadialChart(data)
+	console.log({ dataForRadial })
 	return (
-		<ResponsiveContainer width='100%' height='100%'>
-			<RadialBarChart cx='50%' cy='10%' innerRadius='10%' outerRadius='80%' barSize={15} data={data}>
-				<RadialBar label={{ position: 'insideStart' }} background dataKey='uv' />
-				{/* <Legend iconSize={10} wrapperStyle={style} layout='vertical' /> */}
-			</RadialBarChart>
+		<ResponsiveContainer width='100%' height='50%'>
+			<RadarChart cx='50%' cy='50%' outerRadius='80%' data={dataForRadial}>
+				<PolarGrid />
+				<PolarAngleAxis dataKey='subject' />
+				<PolarRadiusAxis />
+				<Radar dataKey='A' stroke='#8884d8' fill='#8884d8' fillOpacity={0.6} />
+			</RadarChart>
 		</ResponsiveContainer>
 	)
 }

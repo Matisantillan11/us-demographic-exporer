@@ -5,7 +5,10 @@ interface Option {
 
 export interface SelectProps {
 	id?: string
+	value?: string
 	intialPlaceholder: string
-	options: Array<Option>
+	handleSelection: (value: string) => void
+	multiple?: boolean
 	searcherPlaceholder: string
+	options: Array<Option>
 }

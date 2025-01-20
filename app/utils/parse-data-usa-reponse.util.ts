@@ -3,6 +3,10 @@ import {
 	DataUSAResponseByYear,
 	ParsedDataUsaResponse,
 	ParsedDataUsaResponseByYear,
+	ParsedEnrollmentResponse,
+	ParsedPopulationByRaceResponse,
+	USAEnrollmentResponse,
+	USAPopulationByRaceResponse,
 } from '../interfaces/data-usa-response.interface'
 import { formatNumberToLabel } from './format-numbers-to-labels.util'
 
@@ -11,7 +15,7 @@ import { formatNumberToLabel } from './format-numbers-to-labels.util'
  * @param response - The response from the Data USA API.
  * @returns - The parsed response.
  */
-export const parseDataUsaResponse = (response: Array<DataUSAResponse>): Array<ParsedDataUsaResponse> => {
+export const transformDataUsaResponse = (response: Array<DataUSAResponse>): Array<ParsedDataUsaResponse> => {
 	if (response) {
 		return response.map((data) => {
 			return {
@@ -25,7 +29,7 @@ export const parseDataUsaResponse = (response: Array<DataUSAResponse>): Array<Pa
 	throw new Error('No data to parse')
 }
 
-export const parseDataUSAResponseByYear = (
+export const transformDataUSAResponseByYear = (
 	response: Array<DataUSAResponseByYear>,
 ): Array<ParsedDataUsaResponseByYear> => {
 	if (response) {
@@ -35,6 +39,38 @@ export const parseDataUSAResponseByYear = (
 				population: formatNumberToLabel(data.Population),
 				state: data.State,
 				percentage: ((data?.['Foreign-Born Citizens'] / data.Population) * 100).toFixed(2),
+			}
+		})
+	}
+
+	throw new Error('No data to parse')
+}
+
+export const transformEnrollmentResponse = (
+	response: Array<USAEnrollmentResponse>,
+): Array<ParsedEnrollmentResponse> => {
+	if (response) {
+		return response.map((data) => {
+			return {
+				gender: data?.Gender,
+				race: data['IPEDS Race'],
+				enrollment: data.Enrollment,
+			}
+		})
+	}
+
+	throw new Error('No data to parse')
+}
+
+export const transformPopulationByRaceResponse = (
+	response: Array<USAPopulationByRaceResponse>,
+): Array<ParsedPopulationByRaceResponse> => {
+	if (response) {
+		return response.map((data) => {
+			return {
+				race: data.Race.length > 20 ? `${data.Race.slice(0, 20)}...` : data.Race,
+				totalPopulation: parseInt(data['Total Population'].toFixed(0)),
+				totalForeignPopulation: data['Total Population MOE Appx'],
 			}
 		})
 	}

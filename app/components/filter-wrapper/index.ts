@@ -1,1 +1,1 @@
-export { default as FilterWrapper } from './filter-wrapper.component'
+export { default as Filters } from '../state-table/detailed-table.component'

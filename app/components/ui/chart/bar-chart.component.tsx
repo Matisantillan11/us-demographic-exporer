@@ -1,19 +1,20 @@
 'use client'
-import { Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, ComposedChart } from 'recharts'
-import { ParsedDataUsaResponse } from '~/app/interfaces/data-usa-response.interface'
+import { XAxis, Tooltip, Legend, ResponsiveContainer, ComposedChart, YAxis } from 'recharts'
+
 import CustomTooltip from './custom-tooltip.component'
+import { ReactNode } from 'react'
+import { formatNumberToLabel } from '~/app/utils'
 
 export default function BarChart({
-	handleDrawer,
+	xAxisDataKey,
+	children,
 	data,
 }: {
-	handleDrawer: (year: string) => void
-	data: Array<ParsedDataUsaResponse> | undefined
+	xAxisDataKey: string
+	children: ReactNode | ReactNode[]
+	data: Array<unknown> | undefined
 }) {
-	const handlePressBar = ({ year }: { year: string }) => {
-		handleDrawer(year)
-	}
-
+	console.log({ data })
 	return (
 		<ResponsiveContainer width='100%' height={700}>
 			<ComposedChart
@@ -24,27 +25,12 @@ export default function BarChart({
 					left: 0,
 					bottom: 5,
 				}}>
-				<XAxis dataKey='year' />
-				<YAxis stroke='transparent' />
+				<XAxis dataKey={xAxisDataKey} className='text-wrap' />
+				<YAxis tickFormatter={(value) => formatNumberToLabel(value)} />
 				<Tooltip content={<CustomTooltip />} />
 				<Legend />
 
-				<Bar
-					dataKey='totalPopulation'
-					fill='#1453BC'
-					name='Total population'
-					onClick={handlePressBar}
-					radius={[10, 10, 10, 10]}
-					className='hover:cursor-pointer'
-				/>
-				<Bar
-					dataKey='foreignBorn'
-					fill='#D8FD20'
-					name='Foreing born'
-					onClick={handlePressBar}
-					radius={[10, 10, 10, 10]}
-					className='hover:cursor-pointer'
-				/>
+				{children}
 			</ComposedChart>
 		</ResponsiveContainer>
 	)

@@ -46,17 +46,30 @@ export const transformDataUSAResponseByYear = (
 	throw new Error('No data to parse')
 }
 
+const groupEnrollmentByRace = (response: Array<USAEnrollmentResponse>): Array<ParsedEnrollmentResponse> => {
+	const groupByRace: ParsedEnrollmentResponse[] = []
+
+	response.forEach((item) => {
+		const race = item['IPEDS Race']
+		if (!groupByRace.find((el) => el?.race === race)) {
+			groupByRace.push({
+				race,
+				enrollment_male: response.find((el) => el['IPEDS Race'] === race && el.Gender === 'Men')?.Enrollment ?? 0,
+				enrollment_women: response.find((el) => el['IPEDS Race'] === race && el.Gender === 'Women')?.Enrollment ?? 0,
+			})
+		}
+	})
+
+	return groupByRace
+}
+
 export const transformEnrollmentResponse = (
 	response: Array<USAEnrollmentResponse>,
 ): Array<ParsedEnrollmentResponse> => {
 	if (response) {
-		return response.map((data) => {
-			return {
-				gender: data?.Gender,
-				race: data['IPEDS Race'],
-				enrollment: data.Enrollment,
-			}
-		})
+		//group by IPEDS Race
+		const groupedByRace = groupEnrollmentByRace(response)
+		return groupedByRace
 	}
 
 	throw new Error('No data to parse')
@@ -69,7 +82,7 @@ export const transformPopulationByRaceResponse = (
 		return response.map((data) => {
 			return {
 				race: data.Race.length > 20 ? `${data.Race.slice(0, 20)}...` : data.Race,
-				totalPopulation: parseInt(data['Total Population'].toFixed(0)),
+				totalPopulation: data['Total Population'],
 				totalForeignPopulation: data['Total Population MOE Appx'],
 			}
 		})

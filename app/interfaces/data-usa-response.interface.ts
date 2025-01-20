@@ -49,9 +49,9 @@ export interface ParsedPopulationByRaceResponse {
 }
 
 export interface ParsedEnrollmentResponse {
-	gender: string
 	race: string
-	enrollment: number
+	enrollment_male: number
+	enrollment_women: number
 }
 
 export interface ParsedDataUsaResponse {

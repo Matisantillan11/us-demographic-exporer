@@ -1,34 +1,24 @@
 'use client'
-import { Bar } from 'recharts'
-import { BarChart } from '../ui'
+import { AreaChart } from '../ui'
 import { useDatafetchingContext } from '~/app/context/data-fetching.context'
-import { getTotalForeignPopulation, sumAllEnrolledRaces } from './utils'
-import { formatNumberToLabel } from '~/app/utils'
 
 export default function ChartForeignByRace() {
 	const { extraDetails, filters } = useDatafetchingContext()
 
-	const percentageOfEnrolledForeignCitizens = (
-		(sumAllEnrolledRaces(extraDetails?.enrollments) /
-			getTotalForeignPopulation(extraDetails?.foreignPopulationByRace)) *
-		100
-	).toFixed(0)
-
 	return (
-		<div className='px-20'>
+		<div className='px-20 h-full'>
 			<div className='w-full my-10 px-2'>
-				<h2 className='font-bold'>Enrollments by race</h2>
+				<h2 className='font-bold'>Population diversity</h2>
 				<p>
-					In {filters?.year} there were {formatNumberToLabel(sumAllEnrolledRaces(extraDetails?.enrollments), true)}{' '}
-					students enrolled in the United States, this number represents {percentageOfEnrolledForeignCitizens}% of the
-					foreing citizens.
+					The United States is globally recognized for its cultural diversity. Throughout its history, it has welcomed
+					people from various origins, languages, and traditions, forming a rich and complex society. The following
+					chart illustrates this diversity of the year {filters?.year} by showing the quantity of the population
+					represented by each race or ethnicity, including White, African American, Hispanic or Latino, Asian, Native
+					American, and multiracial groups.
 				</p>
 			</div>
 
-			<BarChart xAxisDataKey='race' data={extraDetails?.enrollments}>
-				<Bar dataKey='enrollment_women' name='Women enrolled' fill='#ce0e0e' />
-				<Bar dataKey='enrollment_male' name='Men enrolled' fill='#1453BC' />
-			</BarChart>
+			<AreaChart data={extraDetails?.foreignPopulationByRace} />
 		</div>
 	)
 }

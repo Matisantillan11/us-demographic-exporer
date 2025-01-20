@@ -84,7 +84,7 @@ async function getForeignPopulationByRace({
 }): Promise<Array<ParsedPopulationByRaceResponse>> {
 	try {
 		const NATIVITY = '2'
-		const FOREIGN_POPULATION_DRILLDOWNS = `Race,Gender`
+		const FOREIGN_POPULATION_DRILLDOWNS = `Race`
 		const FOREIGN_POPULATION_MEASURES = `Total Population,Total Population MOE Appx`
 		const response = await apiFetch<ApiResponse<Array<USAPopulationByRaceResponse>>>({
 			url: `/data?Geography=${GEOGRAPHY}&Nativity=${NATIVITY}&measure=${FOREIGN_POPULATION_MEASURES}&drilldowns=${FOREIGN_POPULATION_DRILLDOWNS}&year=${year}`,

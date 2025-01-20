@@ -25,7 +25,7 @@ export default function DetailedDrawer(props: DetailedDrawerProps) {
 	return (
 		<Drawer key={key} onOpenChange={onOpenChange} {...drawerProps}>
 			<DrawerContent {...drawerContentProps}>
-				<DrawerHeader>
+				<DrawerHeader className='px-20'>
 					<DrawerTitle> Foreing born vs Natives of {filters?.year} </DrawerTitle>
 				</DrawerHeader>
 				{children}

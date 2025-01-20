@@ -5,7 +5,7 @@ import { DrawerContentProps } from '../../ui/drawer/drawer.types'
 import { useDatafetchingContext } from '~/app/context/data-fetching.context'
 
 interface DetailedDrawerProps extends DialogProps, DrawerContentProps {
-	handleDrawerState: (year: string) => void
+	handleDrawerState: (year?: string) => void
 }
 
 export default function DetailedDrawer(props: DetailedDrawerProps) {
@@ -19,7 +19,7 @@ export default function DetailedDrawer(props: DetailedDrawerProps) {
 	}
 
 	const onOpenChange = () => {
-		handleDrawerState(filters?.year as string)
+		handleDrawerState()
 	}
 
 	return (

@@ -13,6 +13,7 @@ import { useDetailedView } from '../hooks/use-detailed-view.hook'
 
 interface DataFetchingContext {
 	addFilter: (key: string, value: string) => void
+	clearFilters: () => void
 	extraDetails:
 		| {
 				informationByState: unknown[]
@@ -28,7 +29,7 @@ interface DataFetchingContext {
 	isFetchingExtraDetails: boolean
 	isOpen: boolean
 	setIsDrawerOpen: Dispatch<SetStateAction<boolean>>
-	handleDrawerState: (year: string) => void
+	handleDrawerState: (year?: string) => void
 }
 
 const DataFetchingContext = createContext<DataFetchingContext>({
@@ -44,6 +45,7 @@ const DataFetchingContext = createContext<DataFetchingContext>({
 	isFetchingForeignBornAndNativesData: false,
 	isFetchingExtraDetails: false,
 	addFilter: () => {},
+	clearFilters: () => {},
 	isOpen: false,
 	handleDrawerState: () => {},
 	setIsDrawerOpen: () => {},
@@ -51,11 +53,11 @@ const DataFetchingContext = createContext<DataFetchingContext>({
 
 export const DataFetchingProvider = ({ children }: { children: ReactNode }) => {
 	const { isOpen, handleDrawerState, setIsDrawerOpen } = useDetailedView()
-	const { filters, addFilter } = useFilters()
+	const { filters, addFilter, clearFilters } = useFilters()
 
 	const { data: foreingBornAndNativesData, isPending: isFetchingForeignBornAndNativesData } = useQuery({
-		queryKey: ['foreignBornAndNativesData', filters],
-		queryFn: () => getForeingAndNativesInformation({ year: filters.year }),
+		queryKey: ['foreignBornAndNativesData'],
+		queryFn: () => getForeingAndNativesInformation(),
 	})
 
 	const {
@@ -88,17 +90,16 @@ export const DataFetchingProvider = ({ children }: { children: ReactNode }) => {
 		}
 	}, [handleGetInformation, isOpen])
 
-	console.log({ extraDetails, isFetchingExtraDetails })
-
-	const handleDrawer = (year: string) => {
+	const handleDrawer = (year?: string) => {
 		handleDrawerState(year)
-		addFilter('year', year)
+		addFilter('year', year as string)
 	}
 
 	return (
 		<DataFetchingContext.Provider
 			value={{
 				addFilter,
+				clearFilters,
 				filters,
 				foreingBornAndNativesData,
 				handleDrawerState: handleDrawer,

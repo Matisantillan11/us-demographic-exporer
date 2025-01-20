@@ -13,5 +13,9 @@ export const useFilters = () => {
 		setFilters((prevFilters) => ({ ...prevFilters, [key]: value }))
 	}
 
-	return { filters, addFilter }
+	const clearFilters = () => {
+		setFilters({ year: undefined, state: undefined })
+	}
+
+	return { filters, addFilter, clearFilters }
 }

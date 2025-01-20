@@ -20,15 +20,9 @@ const DRILLDOWNS = 'State'
 const MEASURES = 'Foreign-Born Citizens,Population'
 const GEOGRAPHY = '01000US'
 
-export async function getForeingAndNativesInformation({
-	year,
-}: {
-	year?: string
-}): Promise<Array<ParsedDataUsaResponse>> {
+export async function getForeingAndNativesInformation(): Promise<Array<ParsedDataUsaResponse>> {
 	try {
-		const url = year
-			? `/data?measure=${MEASURES}&Geography=${GEOGRAPHY}&Year=${year}`
-			: `/data?measure=${MEASURES}&Geography=${GEOGRAPHY}`
+		const url = `/data?measure=${MEASURES}&Geography=${GEOGRAPHY}`
 
 		const apiResponse = await apiFetch<ApiResponse<Array<DataUSAResponse>>>({
 			url,

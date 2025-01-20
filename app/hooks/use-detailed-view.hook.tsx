@@ -4,7 +4,7 @@ export const useDetailedView = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false)
 	const [selectedYear, setSelectedYear] = useState<string | undefined>(undefined)
 
-	const handleDrawerState = (year: string) => {
+	const handleDrawerState = (year?: string) => {
 		if (isDrawerOpen) {
 			handleSelectYear(year)
 		} else {
@@ -14,7 +14,7 @@ export const useDetailedView = () => {
 		setIsDrawerOpen(!isDrawerOpen)
 	}
 
-	const handleSelectYear = (year: string) => {
+	const handleSelectYear = (year?: string) => {
 		setSelectedYear(year)
 	}
 

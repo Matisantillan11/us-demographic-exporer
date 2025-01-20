@@ -16,7 +16,7 @@ export default function DashboardCards() {
 
 			<DetailedDrawer open={isOpen} handleDrawerState={handleDrawerState}>
 				{isFetchingExtraDetails ? (
-					<div className='w-full h-full'>
+					<div className='w-full h-full flex items-center justify-center'>
 						<Spinner />
 					</div>
 				) : (

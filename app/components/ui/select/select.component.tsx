@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Popover, PopoverContent, PopoverTrigger } from '../popover'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '../command'
@@ -49,10 +49,13 @@ const Select = ({
 		}
 	}
 
-	const checkItemSelected = (item: string) => {
-		const itemsArray = internalValue.split(',').map((item) => item.trim())
-		return itemsArray.some((currentItem) => currentItem === item)
-	}
+	const checkItemSelected = useCallback(
+		(item: string) => {
+			const itemsArray = internalValue.split(',').map((item) => item.trim())
+			return itemsArray.some((currentItem) => currentItem === item)
+		},
+		[internalValue],
+	)
 
 	const transformValue = (value: string) => {
 		if (internalValue.length > MAX_LENGTH) {
@@ -65,9 +68,17 @@ const Select = ({
 	useEffect(() => {
 		if (internalValue) {
 			handleSelection(internalValue)
+		} else {
+			handleSelection('')
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [internalValue])
+
+	useEffect(() => {
+		if (!value) {
+			setInternalValue('')
+		}
+	}, [value])
 
 	return (
 		<Popover open={open} onOpenChange={setOpen} key={id}>

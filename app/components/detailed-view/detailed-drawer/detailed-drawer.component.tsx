@@ -4,21 +4,26 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '../../ui'
 import { DrawerContentProps } from '../../ui/drawer/drawer.types'
 import { useDatafetchingContext } from '~/app/context/data-fetching.context'
 
-interface DetailedDrawerProps extends DialogProps, DrawerContentProps {}
+interface DetailedDrawerProps extends DialogProps, DrawerContentProps {
+	handleDrawerState: (year: string) => void
+}
 
 export default function DetailedDrawer(props: DetailedDrawerProps) {
 	const { filters } = useDatafetchingContext()
-	const { open, onOpenChange, children, defaultOpen, key, modal, ...drawerContentProps } = props
+	const { open, children, defaultOpen, key, modal, handleDrawerState, ...drawerContentProps } = props
 	const drawerProps = {
 		children,
 		defaultOpen,
 		open,
-		onOpenChange,
 		modal,
 	}
 
+	const onOpenChange = () => {
+		handleDrawerState(filters?.year as string)
+	}
+
 	return (
-		<Drawer key={key} {...drawerProps}>
+		<Drawer key={key} onOpenChange={onOpenChange} {...drawerProps}>
 			<DrawerContent {...drawerContentProps}>
 				<DrawerHeader>
 					<DrawerTitle> Foreing born vs Natives of {filters?.year} </DrawerTitle>

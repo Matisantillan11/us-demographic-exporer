@@ -37,7 +37,7 @@ export default function RootLayout({
 							<Link href='https://datausa.io/' target='_blank'>
 								https://datausa.io/
 							</Link>
-						</span>{' '}
+						</span>
 					</p>
 				</footer>
 			</body>

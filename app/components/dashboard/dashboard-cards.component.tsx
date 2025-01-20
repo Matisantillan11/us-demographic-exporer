@@ -15,7 +15,7 @@ export default function DashboardCards() {
 				<ChartWrapper />
 			</div>
 
-			<DetailedDrawer open={isOpen} onOpenChange={handleDrawerState}>
+			<DetailedDrawer open={isOpen} handleDrawerState={handleDrawerState}>
 				{isFetchingExtraDetails ? (
 					<p>Loading...</p>
 				) : (

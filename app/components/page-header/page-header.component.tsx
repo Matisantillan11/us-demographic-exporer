@@ -5,7 +5,7 @@ export default function PageHeader() {
 	const { filters, addFilter, clearFilters } = useDatafetchingContext()
 	return (
 		<div className='flex flex-row justify-between items-center'>
-			<h1 className='text-xl md:text-3xl'>US Demographic data visualization</h1>
+			<h1 className='text-xl md:text-2xl text-nowrap'>US Demographic data visualization</h1>
 			<FilterByDate filters={filters} addFilter={addFilter} clearFilters={clearFilters} />
 		</div>
 	)

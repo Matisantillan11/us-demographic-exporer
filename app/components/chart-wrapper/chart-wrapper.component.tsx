@@ -1,6 +1,6 @@
 'use client'
 import { Bar } from 'recharts'
-import { BarChart } from '../ui'
+import { BarChart, Spinner } from '../ui'
 
 import { useDatafetchingContext } from '~/app/context/data-fetching.context'
 import { useMemo } from 'react'
@@ -25,7 +25,9 @@ export default function ChartWrapper() {
 	return (
 		<div className='flex flex-col py-4 bg-[#1E1E1E] rounded-xl w-full'>
 			{isFetchingForeignBornAndNativesData ? (
-				<p>loading...</p>
+				<div className='min-h-[600px] flex items-center justify-center'>
+					<Spinner />
+				</div>
 			) : (
 				<BarChart data={foreingBornAndNativesDataForChart} xAxisDataKey='year'>
 					<Bar

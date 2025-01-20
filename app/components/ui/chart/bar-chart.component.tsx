@@ -14,9 +14,8 @@ export default function BarChart({
 	children: ReactNode | ReactNode[]
 	data: Array<unknown> | undefined
 }) {
-	console.log({ data })
 	return (
-		<ResponsiveContainer width='100%' height={700}>
+		<ResponsiveContainer width='100%' height={600}>
 			<ComposedChart
 				data={data}
 				margin={{

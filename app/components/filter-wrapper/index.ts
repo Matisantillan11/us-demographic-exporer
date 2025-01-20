@@ -1,1 +1,1 @@
-export { default as Filters } from '../state-table/detailed-table.component'
+export { default as Filters } from '../detailed-table/detailed-table.component'

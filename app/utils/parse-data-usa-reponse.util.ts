@@ -38,7 +38,9 @@ export const transformDataUSAResponseByYear = (
 				foreignBorn: data?.['Foreign-Born Citizens'] ? formatNumberToLabel(data?.['Foreign-Born Citizens']) : '0',
 				population: formatNumberToLabel(data.Population),
 				state: data.State,
-				percentage: ((data?.['Foreign-Born Citizens'] / data.Population) * 100).toFixed(2),
+				percentage: data?.['Foreign-Born Citizens']
+					? ((data?.['Foreign-Born Citizens'] / data.Population) * 100).toFixed(2)
+					: '0',
 			}
 		})
 	}

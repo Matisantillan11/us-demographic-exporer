@@ -3,7 +3,7 @@ import { ChartWrapper } from '../chart-wrapper'
 import { DetailedDrawer } from '../detailed-view'
 
 import { RadialChart } from '../ui'
-import { DetailedTable } from '../state-table'
+import { DetailedTable } from '../detailed-table'
 import ChartForeignByRace from '../chart-wrapper/chart-foreign-by-race.component'
 
 export default function DashboardCards() {

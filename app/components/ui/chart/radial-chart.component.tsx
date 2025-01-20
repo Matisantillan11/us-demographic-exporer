@@ -6,7 +6,7 @@ import { transformDataForRadialChart } from './utils'
 
 export default function RadialChart({ data }: { data: Array<ParsedPopulationByRaceResponse> | undefined }) {
 	const dataForRadial = transformDataForRadialChart(data)
-	console.log({ dataForRadial })
+
 	return (
 		<ResponsiveContainer width='100%' height='50%'>
 			<RadarChart cx='50%' cy='50%' outerRadius='80%' data={dataForRadial}>

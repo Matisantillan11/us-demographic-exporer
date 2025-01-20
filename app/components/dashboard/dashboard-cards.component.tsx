@@ -1,3 +1,4 @@
+'use client'
 import { useDatafetchingContext } from '~/app/context/data-fetching.context'
 import { ChartWrapper } from '../chart-wrapper'
 import { DetailedDrawer } from '../detailed-view'

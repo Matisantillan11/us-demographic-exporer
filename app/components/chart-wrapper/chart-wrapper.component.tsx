@@ -20,7 +20,6 @@ export default function ChartWrapper() {
 						fill='#1453BC'
 						name='Total population'
 						onClick={handlePressBar}
-						radius={[10, 10, 10, 10]}
 						className='hover:cursor-pointer'
 					/>
 					<Bar
@@ -28,7 +27,6 @@ export default function ChartWrapper() {
 						fill='#D8FD20'
 						name='Foreing born'
 						onClick={handlePressBar}
-						radius={[10, 10, 10, 10]}
 						className='hover:cursor-pointer'
 					/>
 				</BarChart>

@@ -1,3 +1,4 @@
+'use client'
 import { DialogProps } from '@radix-ui/react-dialog'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '../../ui'
 import { DrawerContentProps } from '../../ui/drawer/drawer.types'

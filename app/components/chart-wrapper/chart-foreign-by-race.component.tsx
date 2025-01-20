@@ -1,3 +1,4 @@
+'use client'
 import { Bar } from 'recharts'
 import { BarChart } from '../ui'
 import { useDatafetchingContext } from '~/app/context/data-fetching.context'

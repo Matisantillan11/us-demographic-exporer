@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { TanstackWrapper } from './lib/tanstack-query/tanstack-wrapper'
+import Link from 'next/link'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -29,6 +30,16 @@ export default function RootLayout({
 				<main>
 					<TanstackWrapper>{children}</TanstackWrapper>
 				</main>
+				<footer className='w-full flex items-center justify-center mt-5'>
+					<p>
+						The information used of this website is public and you can reach it in the following link:
+						<span className='mx-1'>
+							<Link href='https://datausa.io/' target='_blank'>
+								https://datausa.io/
+							</Link>
+						</span>{' '}
+					</p>
+				</footer>
 			</body>
 		</html>
 	)

@@ -10,7 +10,7 @@
         Preview
     </a>
     <span>&nbsp;✦&nbsp;</span>
-       <a href="#-stack">
+       <a href="#️-stack">
         Stack
     </a>
     <span>&nbsp;✦&nbsp;</span>
@@ -18,8 +18,12 @@
         Getting Started
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="#️-useful-commands">
+    <a href="#-commands">
         Commands
+    </a>
+    <span>&nbsp;✦&nbsp;</span>
+    <a href="#-data-source">
+        Data source
     </a>
 </div>
 

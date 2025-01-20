@@ -66,9 +66,8 @@ const Select = ({
 		if (internalValue) {
 			handleSelection(internalValue)
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [internalValue])
-
-	console.log({ internalValue })
 
 	return (
 		<Popover open={open} onOpenChange={setOpen} key={id}>

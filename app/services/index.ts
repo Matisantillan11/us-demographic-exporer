@@ -55,7 +55,7 @@ export async function getStateInformationBySelectedYear({
 	}
 }
 
-async function getInformationByState({ state = '04000US01', year = '2022' }: { state?: string; year?: string }) {
+async function getInformationByState({ year = '2022' }: { state?: string; year?: string }) {
 	try {
 		const EXTRA_DRILLDOWNS = `${DRILLDOWNS},Race,Age,Gender`
 		const EXTRA_MEASURES = `${MEASURES},Hispanic Population,Hispanic Population Moe`

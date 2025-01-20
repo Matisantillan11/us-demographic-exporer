@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { Filters, useFilters } from '../hooks/use-filters.hook'
 import {
